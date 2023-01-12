@@ -1,0 +1,68 @@
+----------------
+//get all users
+
+query{
+  users{
+    _id
+  firstName
+    lastName
+    quotes{
+      by
+      name
+    }
+  
+    email
+  }
+}
+
+----------------------
+
+mutation{
+  signupUserDummy(firstName:"Kalu", lastName:"verm", email:"kalu@gmail.com", password:"12345")
+ {
+  _id
+  firstName
+  email
+  lastName
+  password
+} 
+}
+
+--------------------
+
+//
+mutation createUser($userNew:UserInput!){
+  signupUserDummy(userNew:$userNew){
+  _id
+  firstName
+  email
+  lastName
+  password
+}
+}
+
+//UserInput
+{
+  "userNew": {
+    "firstName": "Mukesh",
+    "lastName": "Tiwari",
+    "email":"mukesj@ggm.com",
+    "password":"12345678"
+  }
+}
+------------------------
+
+//signin userNew
+
+mutation signinUser($userSignin:UserSigninInput!){
+  signinUser(userSignin:$userSignin){
+    token
+  }
+  
+}
+{
+  "userSignin": {
+    "email": "govind@gg.com",
+    "password": "12345678"
+  }
+}
